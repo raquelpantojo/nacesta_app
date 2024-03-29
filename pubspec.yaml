@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
+  device_preview: ^1.1.0
   flutter:
     sdk: flutter
 
@@ -17,3 +18,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  #deve ser usado para implementar imagens 
+  assets: 
+    - lib/imagens/

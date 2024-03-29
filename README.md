@@ -7,7 +7,6 @@ O aplicativo de Lista de Compras é projetado para ajudar os usuários a criar e
 
 ## 🔨 Requisitos Funcionais:
 
-
 ## RF003
 ### Esqueceu a senha
 O usuário poderá recuperar a sua senha através dessa funcionalidade. Para isso, será necessário fornecer o e-mail de cadastro.
@@ -45,13 +44,16 @@ Os usuários podem remover itens da lista de compras, selecionando o item, para 
 ### Editar Itens na Lista
 Os usuários podem editar informações dos itens da lista, como a quantidade, categoria ou notas adicionais associadas a cada item.
 
+
 ## RF010
 ### Marcar Itens como Comprados
 Os usuários devem poder marcar os itens da lista como comprados para indicar que já foram adquiridos durante as compras.
 
+
 ## RF011
 ### Pesquisar Itens na Lista
 Os usuários devem poder pesquisar itens na lista de compras, facilitando a localização de itens específicos, especialmente em listas grandes. A pesquisa poderá ser realizada a partir do nome do item.
+
 
 ## Importante
 O aplicativo deverá ser capaz de manipular dados de forma dinâmica, assim, na funcionalidade de Criar Lista, por exemplo, os nomes das listas precisarão ser armazenados em memória.
