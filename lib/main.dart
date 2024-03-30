@@ -2,10 +2,12 @@
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:nacesta_app/tela_esqueceu.dart';
 import 'tela_lista.dart';
 import 'tela_sobre.dart';
 import 'tela_inicio.dart';
 import 'tela_login.dart';
+import 'tela_cadastro.dart';
 
 void main() {
   runApp(
@@ -28,10 +30,12 @@ class MainApp extends StatelessWidget {
       routes: {
         'tlista': (context) => TelaListaView(),
         'tsobre': (context) => TelaSobreView(),
-        'tinicio': (context) => PrincipalView(),
-        'tlogin':(context) => telaLoginView(),
+        'tinicio': (context) => TelaInicioView(),
+        'tlogin':(context) => TelaLoginView(),
+        'tesqueceu':(context) => telaEsqueceuView(),
+        'tcadastro':(context) => TelaCadastroView(),
       },
-      home: PrincipalView(),
+      home: TelaListaView(),
     );
   }
 }
