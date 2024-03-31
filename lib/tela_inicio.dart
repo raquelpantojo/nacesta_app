@@ -58,7 +58,7 @@ class _TelaInicioViewState extends State<TelaInicioView> {
                       foregroundColor: Color.fromARGB(255, 255, 255, 255),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, 'tinicio');
+                      Navigator.pushNamed(context, 'tcriarlista');
                     },
                     child: Text('Criar uma lista'),
                   ),
@@ -69,7 +69,7 @@ class _TelaInicioViewState extends State<TelaInicioView> {
                       foregroundColor: Color.fromARGB(255, 255, 255, 255),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, 'tinicio');
+                      Navigator.pushNamed(context, 'tcriarlista');
                     },
                     child: Text('Ver minhas listas de compra'),
                   ),
