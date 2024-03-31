@@ -47,8 +47,8 @@ class _TelaAdicionarProdutoViewState extends State<TelaAdicionarProdutoView> {
                 backgroundColor: Colors.pink.shade400,
                 foregroundColor: Color.fromARGB(255, 255, 254, 254),),
               onPressed: () {
-                String produto = produtoController.text;
-                int quantidade = int.tryParse(quantidadeController.text) ?? 0;
+                //String produto = produtoController.text;
+                //int quantidade = int.tryParse(quantidadeController.text) ?? 0;
 
                 // Aqui você pode salvar o produto e a quantidade em algum lugar
                 // ou enviar de volta para a tela anterior com os dados inseridos.
