@@ -12,7 +12,6 @@ class TelaLoginView extends StatefulWidget {
 class _TelaLoginViewState extends State<TelaLoginView> {
   var formKey = GlobalKey<FormState>();
   var textValor1 = TextEditingController();
-  var textValor2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +88,7 @@ class _TelaLoginViewState extends State<TelaLoginView> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     String nome = textValor1.text; // Obtendo o nome do campo de texto
-                    Navigator.pushNamed(context, 'tlista', arguments: nome); // Passando o nome como argumento
+                    Navigator.pushNamed(context, 'tinicio', arguments: nome); // Passando o nome como argumento
                   }
                 },
                 child: Text('Login', style: TextStyle(fontSize: 28)),
