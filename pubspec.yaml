@@ -4,13 +4,12 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: '>=3.3.3 <4.0.0'
 
 dependencies:
   device_preview: ^1.1.0
   flutter:
     sdk: flutter
-  flutter_icons: ^1.1.0  
 
 dev_dependencies:
   flutter_test:
@@ -22,4 +21,4 @@ flutter:
   #deve ser usado para implementar imagens 
   assets: 
     - lib/imagens/
- 
+
