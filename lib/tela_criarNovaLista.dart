@@ -16,7 +16,7 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Adicionar o nome da Lista'),
+        title: Text('Crie uma nova lista de compras'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
