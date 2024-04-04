@@ -46,7 +46,7 @@ class _TelaInicioViewState extends State<TelaInicioView> {
           children: [
             // Adiciona o nome:
             Text(
-              'Olá ${nome ?? ''} Bem Vindo a sua lista de produtos',
+              'Olá ${nome ?? ''} \n Bem Vindo a sua lista de produtos',
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 40),
@@ -59,7 +59,7 @@ class _TelaInicioViewState extends State<TelaInicioView> {
                       foregroundColor: Color.fromARGB(255, 255, 255, 255),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, 'tcriarlista');
+                      Navigator.pushNamed(context, 'tcriarNovaLista');
                     },
                     child: Text('Criar uma lista'),
                   ),

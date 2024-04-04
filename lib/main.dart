@@ -29,7 +29,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Na Cesta',
-      initialRoute: 'tcriarNovaLista',
+      initialRoute: 'tlogin',
       routes: {
         'tlogin':(context) => TelaLoginView(),
         'tsobre': (context) => TelaSobreView(),
@@ -42,7 +42,7 @@ class MainApp extends StatelessWidget {
         'tcriarNovaLista':(context)=>TelaCriarNovaListaView(),
    
       },
-      home: TelaCriarNovaListaView(),
+      home: TelaLoginView(),
     );
   }
 }
