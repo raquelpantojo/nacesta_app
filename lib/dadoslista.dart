@@ -20,11 +20,10 @@ class _ListaComprasViewState extends State<ListaComprasView> {
  List<ListaCompras> dados =[];
  @override
  void initState(){
-  dados.add(ListaCompras('Arroz','2 kg' ));
-  dados.add(ListaCompras('Feijão','1 kg'));
-  dados.add(ListaCompras('Macarrão','1 pct'));
-  dados.add(ListaCompras('Carne','1 kg'));
-  dados.add(ListaCompras('Ovos','12 unid'));
+  dados.add(ListaCompras('Lista Abril'));
+  dados.add(ListaCompras('Festa Com amigos'));
+  dados.add(ListaCompras('Churrasco da Firma'));
+  dados.add(ListaCompras('Almoço de domingo'));
   super.initState();
 
  }
@@ -33,10 +32,10 @@ class _ListaComprasViewState extends State<ListaComprasView> {
 
   @override
   Widget build(BuildContext context) {
-    String? NomeDalista = ModalRoute.of(context)?.settings.arguments as String?;
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text('| ${NomeDalista ?? ''}'),
+        title: Text('Listas Salvas'),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -51,8 +50,8 @@ class _ListaComprasViewState extends State<ListaComprasView> {
           return Card
           (
             child: ListTile(
-              title: Text(dados[index].item),
-              subtitle: Text(dados[index].quantidade),
+              title: Text(dados[index].nomelista),
+              
             ),
           );
         },

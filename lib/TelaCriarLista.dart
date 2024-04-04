@@ -33,7 +33,7 @@ class _TelaCriarListaViewState extends State<TelaCriarListaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista - Março'),
+        title: Text(''),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),

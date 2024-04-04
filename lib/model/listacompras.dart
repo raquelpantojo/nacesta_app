@@ -2,9 +2,9 @@
 
 class ListaCompras{
 
-  final String item;
-  final String quantidade;
+  final String nomelista;
+ 
 
   //construtor
-  ListaCompras(this.item,this.quantidade);
+  ListaCompras(this.nomelista);
 }
