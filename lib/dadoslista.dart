@@ -13,6 +13,7 @@ class ListaComprasView extends StatefulWidget {
 
 class _ListaComprasViewState extends State<ListaComprasView> {
 
+
   // Lista dinâmica de objetos da classe contato
   // dados é o atributo da classe
 
@@ -32,9 +33,10 @@ class _ListaComprasViewState extends State<ListaComprasView> {
 
   @override
   Widget build(BuildContext context) {
+    String? NomeDalista = ModalRoute.of(context)?.settings.arguments as String?;
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListView'),
+        title: Text('| ${NomeDalista ?? ''}'),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, duplicate_import
+// ignore_for_file: prefer_const_constructors, duplicate_import, use_key_in_widget_constructors
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,7 @@ import  'tela_esqueceu.dart';
 import 'TelaCriarLista.dart';
 import 'tela_addproduto.dart';
 import 'dadoslista.dart';
+import 'tela_criarNovaLista.dart';
 
 void main() {
   runApp(
@@ -28,7 +29,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Na Cesta',
-      initialRoute: 'tinicio',
+      initialRoute: 'tcriarNovaLista',
       routes: {
         'tlogin':(context) => TelaLoginView(),
         'tsobre': (context) => TelaSobreView(),
@@ -38,9 +39,10 @@ class MainApp extends StatelessWidget {
         'tcriarlista':(context) =>TelaCriarListaView(),
         'taddproduto':(context) =>TelaAdicionarProdutoView(),
         'tdadosLista': (context)=>ListaComprasView(),
+        'tcriarNovaLista':(context)=>TelaCriarNovaListaView(),
    
       },
-      home: TelaLoginView(),
+      home: TelaCriarNovaListaView(),
     );
   }
 }

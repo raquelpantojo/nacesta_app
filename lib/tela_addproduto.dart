@@ -47,10 +47,10 @@ class _TelaAdicionarProdutoViewState extends State<TelaAdicionarProdutoView> {
                 backgroundColor: Colors.pink.shade400,
                 foregroundColor: Color.fromARGB(255, 255, 254, 254),),
               onPressed: () {
-                //String produto = produtoController.text;
-                //int quantidade = int.tryParse(quantidadeController.text) ?? 0;
+                String produto = produtoController.text;
+                int quantidade = int.tryParse(quantidadeController.text) ?? 0;
 
-                //Navigator.pop(context, {'produto': produto, 'quantidade': quantidade});
+                Navigator.pop(context, {'produto': produto, 'quantidade': quantidade});
               },
               child: Text('Salvar',style: TextStyle(fontSize: 20)),
             ),
