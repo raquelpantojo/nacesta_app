@@ -69,7 +69,7 @@ class _TelaInicioViewState extends State<TelaInicioView> {
                       foregroundColor: Color.fromARGB(255, 255, 255, 255),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, 'tcriarlista');
+                      Navigator.pushNamed(context, 'tdadosLista');
                     },
                     child: Text('Ver minhas listas de compra'),
                   ),

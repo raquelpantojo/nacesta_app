@@ -9,6 +9,7 @@ import 'tela_cadastro.dart';
 import  'tela_esqueceu.dart';
 import 'TelaCriarLista.dart';
 import 'tela_addproduto.dart';
+import 'dadoslista.dart';
 
 void main() {
   runApp(
@@ -36,6 +37,7 @@ class MainApp extends StatelessWidget {
         'tcadastro':(context) => TelaCadastroView(),
         'tcriarlista':(context) =>TelaCriarListaView(),
         'taddproduto':(context) =>TelaAdicionarProdutoView(),
+        'tdadosLista': (context)=>ListaComprasView(),
    
       },
       home: TelaLoginView(),
