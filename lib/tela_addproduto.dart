@@ -50,8 +50,6 @@ class _TelaAdicionarProdutoViewState extends State<TelaAdicionarProdutoView> {
                 //String produto = produtoController.text;
                 //int quantidade = int.tryParse(quantidadeController.text) ?? 0;
 
-                // Aqui você pode salvar o produto e a quantidade em algum lugar
-                // ou enviar de volta para a tela anterior com os dados inseridos.
                 //Navigator.pop(context, {'produto': produto, 'quantidade': quantidade});
               },
               child: Text('Salvar',style: TextStyle(fontSize: 20)),

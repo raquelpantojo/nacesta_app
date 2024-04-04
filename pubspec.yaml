@@ -1,10 +1,10 @@
 name: nacesta_app
-description: "A new Flutter project."
+description: " Um projeto em Flutter de uma lista de compras"
 publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.19.5 <4.0.0'
 
 dependencies:
   device_preview: ^1.1.0

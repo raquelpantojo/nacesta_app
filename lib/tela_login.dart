@@ -38,7 +38,7 @@ class _TelaLoginViewState extends State<TelaLoginView> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Informe um nome';
+                    return 'Informe um email';
                   }
                   return null;
                 },

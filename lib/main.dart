@@ -2,12 +2,11 @@
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:nacesta_app/tela_addproduto.dart';
-import 'package:nacesta_app/tela_esqueceu.dart';
 import 'tela_sobre.dart';
 import 'tela_inicio.dart';
 import 'tela_login.dart';
 import 'tela_cadastro.dart';
+import  'tela_esqueceu.dart';
 import 'TelaCriarLista.dart';
 import 'tela_addproduto.dart';
 
