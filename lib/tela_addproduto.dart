@@ -3,7 +3,7 @@
 //Adicionar Itens à Lista
 //Os usuários podem adicionar itens à lista de compras, 
 //especificando o nome do item e a quantidade. Por exemplo, 2 (dois) Pacotes de Arroz de 5kg.
-// ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, prefer_const_constructors
+
 
 import 'package:flutter/material.dart';
 
