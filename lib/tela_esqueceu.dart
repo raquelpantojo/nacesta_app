@@ -4,6 +4,8 @@
 //Para isso, será necessário fornecer o e-mail de cadastro.
 
 
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class telaEsqueceuView extends StatefulWidget {
@@ -32,6 +34,23 @@ class _telaEsqueceuViewState extends State<telaEsqueceuView> {
                 width: 200,
                 height: 200,
               ),
+               TextFormField(
+                controller: textValor1, // Controlador para o campo de texto do nome
+                style: TextStyle(fontSize: 20),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                  hintText: 'email',
+                  prefixIcon: Icon(Icons.mail, color: Color.fromARGB(255, 223, 108, 146)),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Informe um email';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 30),
               TextFormField(
                 style: const TextStyle(fontSize: 20),
                 decoration: const InputDecoration(
@@ -42,9 +61,9 @@ class _telaEsqueceuViewState extends State<telaEsqueceuView> {
                 ),
                 validator: (value) {
                   if (value == null) {
-                    return 'Informe uma senha';
+                    return 'Informe uma nova senha';
                   } else if (value.isEmpty) {
-                    return 'Informe uma senha';
+                    return 'Informe uma nova senha';
                   }
                   return null;
                 },
@@ -59,9 +78,7 @@ class _telaEsqueceuViewState extends State<telaEsqueceuView> {
                   //hintText: 'senha',
                 ),
                 validator: (value) {
-                  if (value == null) {
-                    return 'Informe um email';
-                  } else if (value.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Informe uma senha';
                   } else if (double.tryParse(value) == null) {
                     return 'Informe um valor NUMÉRICO';

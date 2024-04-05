@@ -1,4 +1,9 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+//RF005
+//Criar Listas de Compras
+//Os usuários poderão criar diversas listas de compras no aplicativo. 
+//Para criação de uma nova lista será necessário especificar o nome da lista.
+//Por exemplo, lista de compras semanal, lista de compras de supermercado, etc.
+
 
 import 'package:flutter/material.dart';
 

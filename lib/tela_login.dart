@@ -10,8 +10,8 @@ class TelaLoginView extends StatefulWidget {
 }
 
 class _TelaLoginViewState extends State<TelaLoginView> {
-  var formKey = GlobalKey<FormState>();
-  var textValor1 = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final textValor1 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,7 @@ class _TelaLoginViewState extends State<TelaLoginView> {
         child: Form(
           key: formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
                 'lib/imagens/logo.PNG',
@@ -46,6 +47,7 @@ class _TelaLoginViewState extends State<TelaLoginView> {
               SizedBox(height: 30),
               TextFormField(
                 style: TextStyle(fontSize: 20),
+                obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Senha',
@@ -55,62 +57,66 @@ class _TelaLoginViewState extends State<TelaLoginView> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Informe uma senha';
-                  } else if (double.tryParse(value) == null) {
-                    return 'Informe um valor NUMÉRICO';
                   }
                   return null;
                 },
               ),
               SizedBox(height: 10),
               TextButton(
-                style: TextButton.styleFrom(
-                  shadowColor: Color.fromARGB(255, 223, 108, 146),
-                ),
                 onPressed: () {
                   Navigator.pushNamed(context, 'tesqueceu');
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text("Esqueceu a senha?"),
                     ),
+                    
                   );
                 },
+                style: ButtonStyle(
+              foregroundColor:  MaterialStateProperty.all(Colors.pink.shade400),
+                ),
                 child: Text(
                   'Esqueci a senha',
                   style: TextStyle(fontSize: 22),
                 ),
               ),
               SizedBox(height: 30),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.pink.shade400,
-                  foregroundColor: Color.fromARGB(255, 255, 254, 254),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      String nome = textValor1.text; 
+                      Navigator.pushNamed(context, 'tinicio', arguments: nome); 
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink.shade400,
+                    foregroundColor: Color.fromARGB(255, 255, 254, 254),
+                  ),
+                  child: Text('Login', style: TextStyle(fontSize: 28)),
                 ),
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    String nome = textValor1.text; // Obtendo o nome do campo de texto
-                    Navigator.pushNamed(context, 'tinicio', arguments: nome); // Passando o nome como argumento
-                  }
-                },
-                child: Text('Login', style: TextStyle(fontSize: 28)),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(236, 64, 122, 1),
-                  foregroundColor: Color.fromARGB(255, 0, 0, 0),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'tcadastro');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(236, 64, 122, 1),
+                    foregroundColor: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                  child: Text(
+                    'Cadastrar',
+                    style: TextStyle(fontSize: 28),
+                    ),
                 ),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'tcadastro');
-                },
-                child: Text(
-                  'Cadastrar',
-                  style: TextStyle(fontSize: 28),
-                ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+ }
 }
+              
