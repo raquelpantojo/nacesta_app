@@ -16,7 +16,7 @@ class _TelaSobreViewState extends State<TelaSobreView> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(50, 100, 50, 100),
+          padding: const EdgeInsets.fromLTRB(50, 30, 50, 100),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -33,7 +33,13 @@ class _TelaSobreViewState extends State<TelaSobreView> {
                 onPressed: () {
                   Navigator.pushNamed(context, 'tinicio');
                 },
-                child: const Text('Voltar'),
+                style: OutlinedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 223, 108, 146), 
+                 ),
+                child: const Text('Voltar',
+                selectionColor: Color.fromARGB(255, 255, 255, 254),
+                style: TextStyle(fontSize: 18)),
+                
               ),
               
             ],

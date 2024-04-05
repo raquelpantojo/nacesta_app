@@ -1,6 +1,8 @@
 //Tela de Esqueceu senha
+//RF003
+// O usuário poderá recuperar a sua senha através dessa funcionalidade. 
+//Para isso, será necessário fornecer o e-mail de cadastro.
 
-// ignore_for_file: camel_case_types, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 
@@ -40,9 +42,9 @@ class _telaEsqueceuViewState extends State<telaEsqueceuView> {
                 ),
                 validator: (value) {
                   if (value == null) {
-                    return 'Informe um nome';
+                    return 'Informe uma senha';
                   } else if (value.isEmpty) {
-                    return 'Informe um nome';
+                    return 'Informe uma senha';
                   }
                   return null;
                 },

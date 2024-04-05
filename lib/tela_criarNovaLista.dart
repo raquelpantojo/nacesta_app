@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 
 class TelaCriarNovaListaView extends StatefulWidget {
@@ -32,7 +34,7 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crie uma nova lista de compras'),
+        title: Text('Crie uma nova lista'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -46,82 +48,68 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
               ),
             ),
             SizedBox(height: 40),
-            Center(
-              child: Column(
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink.shade400,
-                      foregroundColor: Colors.white,
-                    ),
-                    onPressed: () {
-                      String nomeDaLista = nomeDaListaController.text;
-                      Navigator.pop(context, {'nomeDaLista': nomeDaLista});
-                    },
-                    child: Text('Salvar', style: TextStyle(fontSize: 20)),
-                  ),
-                  SizedBox(height: 24),
-                  Text(
-                    'Selecione os produtos e a quantidade:',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 24),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: produtos.length,
-                      itemBuilder: (context, index) {
-                        final produto = produtos[index];
-                        return ListTile(
-                          title: Text(produto, style: TextStyle(fontSize: 20)),
-                          trailing: SizedBox(
-                            width: 100,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.remove),
-                                  onPressed: () {
-                                    setState(() {
-                                      if (quantidadeProdutos[produto]! > 0) {
-                                        // Se a quantidade for maior que 1, diminui 1
-                                        quantidadeProdutos[produto] =
-                                            quantidadeProdutos[produto]! - 1;
-                                      }
-                                    });
-                                  },
-                                ),
-                                Text(
-                                  '${quantidadeProdutos[produto]}', // Quantidade do produto
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.add),
-                                  onPressed: () {
-                                    setState(() {
-                                      // Adiciona 1 à quantidade
-                                      quantidadeProdutos[produto] =
-                                          quantidadeProdutos[produto]! + 1;
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
+            Text(
+              'Selecione os produtos e a quantidade:',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 24),
+            Expanded(
+              child: ListView.builder(
+                itemCount: produtos.length,
+                itemBuilder: (context, index) {
+                  final produto = produtos[index];
+                  return ListTile(
+                    title: Text(produto, style: TextStyle(fontSize: 20)),
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.remove),
+                            onPressed: () {
+                              setState(() {
+                                if (quantidadeProdutos[produto]! > 0) {
+                                  // Se a quantidade for maior que 1, diminui 1
+                                  quantidadeProdutos[produto] =
+                                      quantidadeProdutos[produto]! - 1;
+                                }
+                              });
+                            },
                           ),
-                        );
-                      },
+                          Text(
+                            '${quantidadeProdutos[produto]}', // Quantidade do produto
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.add),
+                            onPressed: () {
+                              setState(() {
+                                // Adiciona 1 à quantidade
+                                quantidadeProdutos[produto] =
+                                    quantidadeProdutos[produto]! + 1;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink.shade400,
-                      foregroundColor: Colors.white,
-                    ),
-                    onPressed: () {
-                      // Adicione aqui a funcionalidade de salvar a lista
-                    },
-                    child: Text('Salvar', style: TextStyle(fontSize: 20)),
-                  ),
-                ],
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 24),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.pink.shade400,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () {
+                  //String nomeDaLista = nomeDaListaController.text;
+                  Navigator.pushNamed(context,'tinicio');
+                },
+                child: Text('Salvar', style: TextStyle(fontSize: 20)),
               ),
             ),
           ],
