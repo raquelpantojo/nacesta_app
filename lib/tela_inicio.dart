@@ -66,16 +66,7 @@ class _TelaInicioViewState extends State<TelaInicioView> {
                         ),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      child: Center(
-                        child: Text(
-                          'Criar uma lista',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      
                     ),
                   ),
                   SizedBox(height: 20), // Espaçamento entre os botões
