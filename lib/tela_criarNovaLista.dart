@@ -1,19 +1,16 @@
-//RF005
-//Criar Listas de Compras
-//Os usuários poderão criar diversas listas de compras no aplicativo. 
-//Para criação de uma nova lista será necessário especificar o nome da lista.
-//Por exemplo, lista de compras semanal, lista de compras de supermercado, etc.
-
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
 class TelaCriarNovaListaView extends StatefulWidget {
   @override
-  _TelaCriarListaNovaViewState createState() => _TelaCriarListaNovaViewState();
+  _TelaCriarListaNovaViewState createState() =>
+      _TelaCriarListaNovaViewState();
 }
 
 class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
   TextEditingController nomeDaListaController = TextEditingController();
+  TextEditingController pesquisaController = TextEditingController();
   final List<String> produtos = [
     'Arroz',
     'Feijão',
@@ -35,11 +32,21 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
     'Ovos': 0,
   };
 
+  List<String> produtosFiltrados = [];
+
+  @override
+  void initState() {
+    super.initState();
+    produtosFiltrados.addAll(produtos);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Crie uma nova lista'),
+        foregroundColor: Color.fromARGB(255, 245, 241, 241),
+        backgroundColor: Color.fromARGB(255, 223, 108, 146),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -51,18 +58,47 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
               decoration: InputDecoration(
                 labelText: 'Escreva o nome da Lista',
               ),
+              style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 20.0),
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: pesquisaController,
+                    onChanged: (value) {
+                      setState(() {
+                        produtosFiltrados = produtos
+                            .where((produto) =>
+                                produto.toLowerCase().contains(value.toLowerCase()))
+                            .toList();
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Pesquise',
+                    ),
+                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 20.0),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    // Adicione a funcionalidade de pesquisa aqui
+                  },
+                ),
+              ],
             ),
             SizedBox(height: 40),
             Text(
               'Selecione os produtos e a quantidade:',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
-                itemCount: produtos.length,
+                itemCount: produtosFiltrados.length,
                 itemBuilder: (context, index) {
-                  final produto = produtos[index];
+                  final produto = produtosFiltrados[index];
                   return ListTile(
                     title: Text(produto, style: TextStyle(fontSize: 20)),
                     trailing: SizedBox(
@@ -103,7 +139,7 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
                 },
               ),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -111,8 +147,9 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
                   foregroundColor: Colors.white,
                 ),
                 onPressed: () {
-                  //String nomeDaLista = nomeDaListaController.text;
-                  Navigator.pushNamed(context,'tinicio');
+                  String nomeDaLista = nomeDaListaController.text;
+                  // Salvar a lista de compras
+                  // Implemente a lógica para salvar a lista aqui
                 },
                 child: Text('Salvar', style: TextStyle(fontSize: 20)),
               ),
