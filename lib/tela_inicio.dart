@@ -1,5 +1,4 @@
-//Tela principal
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -46,22 +45,38 @@ class _TelaInicioViewState extends State<TelaInicioView> {
           children: [
             // Adiciona o nome:
             Text(
-              'Olá ${nome ?? ''} \n Bem Vindo a sua lista de produtos',
+              'Olá ${nome ?? ''} \nBem Vindo a sua lista',
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 40),
             Center( // Centralizando os botões na tela
               child: Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(236, 64, 122, 1),
-                      foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       Navigator.pushNamed(context, 'tcriarNovaLista');
                     },
-                    child: Text('Criar uma lista'),
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('lib/imagens/cestaVazia.jpg'), // Caminho da imagem
+                          //fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Criar uma lista',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20), // Espaçamento entre os botões
                   ElevatedButton(

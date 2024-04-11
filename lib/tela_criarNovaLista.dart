@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -44,9 +44,15 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crie uma nova lista'),
-        foregroundColor: Color.fromARGB(255, 245, 241, 241),
-        backgroundColor: Color.fromARGB(255, 223, 108, 146),
+        title: 
+        Row(
+          children:[
+            Icon(Icons.list),
+            Text('  Crie uma nova lista'),
+          ],
+      ),
+      foregroundColor: Color.fromARGB(255, 245, 241, 241),
+      backgroundColor: Color.fromARGB(255, 223, 108, 146),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -64,20 +70,23 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
             Row(
               children: [
                 Expanded(
-                  child: TextField(
-                    controller: pesquisaController,
-                    onChanged: (value) {
-                      setState(() {
-                        produtosFiltrados = produtos
-                            .where((produto) =>
-                                produto.toLowerCase().contains(value.toLowerCase()))
-                            .toList();
-                      });
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Pesquise',
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                    child: TextField(
+                      controller: pesquisaController,
+                      onChanged: (value) {
+                        setState(() {
+                          produtosFiltrados = produtos
+                              .where((produto) =>
+                                  produto.toLowerCase().contains(value.toLowerCase()))
+                              .toList();
+                        });
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Pesquise',
+                      ),
+                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 20.0),
                     ),
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 20.0),
                   ),
                 ),
                 IconButton(
@@ -91,7 +100,7 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
             SizedBox(height: 40),
             Text(
               'Selecione os produtos e a quantidade:',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 223, 108, 146)),
             ),
             SizedBox(height: 10),
             Expanded(
@@ -147,9 +156,7 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
                   foregroundColor: Colors.white,
                 ),
                 onPressed: () {
-                  String nomeDaLista = nomeDaListaController.text;
-                  // Salvar a lista de compras
-                  // Implemente a lógica para salvar a lista aqui
+                 //String nomeDaLista = nomeDaListaController.text;
                 },
                 child: Text('Salvar', style: TextStyle(fontSize: 20)),
               ),
