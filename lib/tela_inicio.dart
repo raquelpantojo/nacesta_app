@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class TelaInicioView extends StatefulWidget {
   const TelaInicioView({Key? key});
@@ -45,16 +47,18 @@ class _TelaInicioViewState extends State<TelaInicioView> {
           children: [
             // Adiciona o nome:
             Text(
-              'Olá ${nome ?? ''} \nBem Vindo a sua lista',
+              'Olá ${nome ?? ''} \nBem-vindo a sua lista',
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 40),
             Center( // Centralizando os botões na tela
               child: Column(
                 children: [
+                  //para adicionar uma imagem, foi utilizado o InkWeel como um botão
                   InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, 'tcriarNovaLista');
+          
                     },
                     child: Container(
                       width: 200,
@@ -62,24 +66,39 @@ class _TelaInicioViewState extends State<TelaInicioView> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('lib/imagens/cestaVazia.jpg'), // Caminho da imagem
-                          //fit: BoxFit.cover,
+                          fit: BoxFit.cover,
                         ),
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
+                      child: const Text("Criar nova lista",style: TextStyle(fontSize: 20),
+                      selectionColor: Color.fromARGB(255, 255, 253, 253),
+                      textAlign: TextAlign.center),
                       
                     ),
                   ),
-                  SizedBox(height: 20), // Espaçamento entre os botões
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(236, 64, 122, 1),
-                      foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    onPressed: () {
+                  SizedBox(height: 20),
+                  
+                  InkWell(
+                    onTap: () {
                       Navigator.pushNamed(context, 'tdadosLista');
+          
                     },
-                    child: Text('Ver minhas listas de compra'),
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('lib/imagens/listaCompras.png'), // Caminho da imagem
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: const Text("Ver listas ",style: TextStyle(fontSize: 20),
+                      selectionColor: Color.fromARGB(255, 255, 253, 253),
+                      textAlign: TextAlign.center),
+                      ),
                   ),
+                     
                 ],
               ),
             ),
