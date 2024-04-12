@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class TelaInicioView extends StatefulWidget {
   const TelaInicioView({Key? key});
@@ -17,6 +17,7 @@ class _TelaInicioViewState extends State<TelaInicioView> {
     // Obtendo o argumento passado para esta tela
     String? nome = ModalRoute.of(context)?.settings.arguments as String?;
 
+  
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0), // Definindo a altura preferida da AppBar
@@ -29,12 +30,15 @@ class _TelaInicioViewState extends State<TelaInicioView> {
           backgroundColor: Color.fromARGB(255, 223, 108, 146), // Definindo a cor de fundo da AppBar
           elevation: 0, // Removendo a sombra da AppBar
           actions: [
-            IconButton(
+            Tooltip(
+            message:'Sobre',
+            child: IconButton(
               icon: Icon(Icons.info, color: Colors.white),
               onPressed: () {
                 Navigator.pushNamed(context, 'tsobre');
               },
-              iconSize: 40
+              iconSize: 40,
+            ),
             ),
           ],
         ),
@@ -51,18 +55,26 @@ class _TelaInicioViewState extends State<TelaInicioView> {
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 40),
-            Center( // Centralizando os botões na tela
-              child: Column(
+            Center(
+              // Centralizando os botões na tela
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  //para adicionar uma imagem, foi utilizado o InkWeel como um botão
                   InkWell(
                     onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Criar nova lista"),
+                    ),
+                    
+                  );
                       Navigator.pushNamed(context, 'tcriarNovaLista');
-          
                     },
+                    child: Tooltip(
+                      message: "Criar Lista",
                     child: Container(
-                      width: 200,
-                      height: 200,
+                      width: 85,
+                      height: 85,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('lib/imagens/cestaVazia.jpg'), // Caminho da imagem
@@ -70,35 +82,35 @@ class _TelaInicioViewState extends State<TelaInicioView> {
                         ),
                         borderRadius: BorderRadius.circular(30.0),
                       ),
-                      child: const Text("Criar nova lista",style: TextStyle(fontSize: 20),
-                      selectionColor: Color.fromARGB(255, 255, 253, 253),
-                      textAlign: TextAlign.center),
-                      
+
+                    ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  
                   InkWell(
                     onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Ver Listas"),
+                    ),
+                    
+                  );
                       Navigator.pushNamed(context, 'tdadosLista');
-          
                     },
+                    child: Tooltip(
+                      message: "Ver Listas",
                     child: Container(
-                      width: 200,
-                      height: 200,
+                      width: 85,
+                      height: 85,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('lib/imagens/listaCompras.png'), // Caminho da imagem
                           fit: BoxFit.cover,
                         ),
-                        borderRadius: BorderRadius.circular(30.0),
+                        //borderRadius: BorderRadius.circular(30.0),
                       ),
-                      child: const Text("Ver listas ",style: TextStyle(fontSize: 20),
-                      selectionColor: Color.fromARGB(255, 255, 253, 253),
-                      textAlign: TextAlign.center),
-                      ),
+                    ),
+                    ),
                   ),
-                     
                 ],
               ),
             ),

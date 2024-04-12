@@ -63,3 +63,8 @@ O aplicativo deverá ser capaz de manipular dados de forma dinâmica, assim, na 
 O aplicativo deve ser desenvolvido com o Flutter SDK.
 O desenvolvimento deve ser realizado com o paradigma de programação orientado a objetos.
 O design deve ser intuitivo e fácil de usar, com botões e controles claramente identificáveis.
+
+
+# Dicas:
+Usar <<Tooltip>> é um widget usado para fornecer informações quando o usuário interage com um determinado widget.
+Usado como uma mensagem quando o usuário interage com o botão
