@@ -1,3 +1,5 @@
+![Static Badge](https://img.shields.io/badge/status-finalizado-violet)
+
 # nacesta_app
 O aplicativo de Lista de Compras é projetado para ajudar os usuários a criar e gerenciar listas de compras de forma eficiente. Ele permite que os usuários adicionem itens à lista, marquem itens como comprados e removam itens conforme necessário.
 
