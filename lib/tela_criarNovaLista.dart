@@ -1,11 +1,8 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class TelaCriarNovaListaView extends StatefulWidget {
   @override
-  _TelaCriarListaNovaViewState createState() =>
-      _TelaCriarListaNovaViewState();
+  _TelaCriarListaNovaViewState createState() => _TelaCriarListaNovaViewState();
 }
 
 class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
@@ -21,7 +18,6 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
     'Ovos',
   ];
 
-  // Mapa para armazenar a quantidade de cada produto
   Map<String, int> quantidadeProdutos = {
     'Arroz': 0,
     'Feijão': 0,
@@ -32,11 +28,14 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
     'Ovos': 0,
   };
 
-  List<String> produtosFiltrados = [];
+  List<String> produtosFiltrados = []; 
+
+  List<Map<String, dynamic>> produtosAdicionados = [];
 
   @override
   void initState() {
     super.initState();
+    // Inicialize produtosFiltrados com os produtos disponíveis
     produtosFiltrados.addAll(produtos);
   }
 
@@ -44,15 +43,14 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: 
-        Row(
-          children:[
+        title: Row(
+          children: [
             Icon(Icons.list),
             Text('  Crie uma nova lista'),
           ],
-      ),
-      foregroundColor: Color.fromARGB(255, 245, 241, 241),
-      backgroundColor: Color.fromARGB(255, 223, 108, 146),
+        ),
+        foregroundColor: Color.fromARGB(255, 245, 241, 241),
+        backgroundColor: Color.fromARGB(255, 223, 108, 146),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -76,10 +74,8 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
                       controller: pesquisaController,
                       onChanged: (value) {
                         setState(() {
-                          produtosFiltrados = produtos
-                              .where((produto) =>
-                                  produto.toLowerCase().contains(value.toLowerCase()))
-                              .toList();
+                          // Filtre os produtos com base na pesquisa
+                          produtosFiltrados = produtos.where((produto) => produto.toLowerCase().contains(value.toLowerCase())).toList();
                         });
                       },
                       decoration: InputDecoration(
@@ -92,7 +88,7 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
                 IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {
-                    // Adicione a funcionalidade de pesquisa aqui
+                  
                   },
                 ),
               ],
@@ -110,39 +106,47 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
                   final produto = produtosFiltrados[index];
                   return ListTile(
                     title: Text(produto, style: TextStyle(fontSize: 20)),
-                    trailing: SizedBox(
-                      width: 100,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.remove),
-                            onPressed: () {
-                              setState(() {
-                                if (quantidadeProdutos[produto]! > 0) {
-                                  // Se a quantidade for maior que 1, diminui 1
-                                  quantidadeProdutos[produto] =
-                                      quantidadeProdutos[produto]! - 1;
-                                }
-                              });
-                            },
-                          ),
-                          Text(
-                            '${quantidadeProdutos[produto]}', // Quantidade do produto
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.add),
-                            onPressed: () {
-                              setState(() {
-                                // Adiciona 1 à quantidade
-                                quantidadeProdutos[produto] =
-                                    quantidadeProdutos[produto]! + 1;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min, // Para ajustar o tamanho dos ícones
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            setState(() {
+                              // Encontra o índice do produto selecionado em produtosAdicionados
+                              final produtoSelecionadoIndex = produtosAdicionados.indexWhere((item) => item['produto'] == produto);
+                              if (produtoSelecionadoIndex != -1) {
+                                produtosAdicionados.removeAt(produtoSelecionadoIndex);
+                              }
+                              // Remova o produto da lista de produtosFiltrados
+                              produtosFiltrados.removeAt(index);
+                            });
+                          },
+                        ),
+                        SizedBox(width: 10), // Adiciona espaço entre os ícones
+                        IconButton(
+                          icon: Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantidadeProdutos[produto]! > 0) {
+                                quantidadeProdutos[produto] = quantidadeProdutos[produto]! -1 ;
+                              }
+                            });
+                          },
+                        ),
+                        Text(
+                          '${quantidadeProdutos[produto]}', // Quantidade do produto
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantidadeProdutos[produto] = quantidadeProdutos[produto]! + 1;
+                            });
+                          },
+                        ),
+                      ],
                     ),
                   );
                 },
@@ -156,7 +160,29 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
                   foregroundColor: Colors.white,
                 ),
                 onPressed: () {
-                 //String nomeDaLista = nomeDaListaController.text;
+                  // Crie uma lista de produtos adicionados
+                  List<Map<String, dynamic>> produtosSelecionados = [];
+                  quantidadeProdutos.forEach((produto, quantidade) {
+                    if (quantidade > 0) {
+                      produtosSelecionados.add({'produto': produto, 'quantidade': quantidade});
+                    }
+                  });
+
+                  // Adicione os produtos selecionados à lista de produtos adicionados
+                  produtosAdicionados.addAll(produtosSelecionados);
+
+                  // Limpe a quantidade de produtos selecionados
+                  quantidadeProdutos.forEach((produto, quantidade) {
+                    quantidadeProdutos[produto] = 0;
+                  });
+
+                  // Limpe o campo de pesquisa
+                  pesquisaController.clear();
+
+                  // Atualize os produtos filtrados para exibir todos os produtos novamente
+                  setState(() {
+                    produtosFiltrados = produtos;
+                  });
                 },
                 child: Text('Salvar', style: TextStyle(fontSize: 20)),
               ),
@@ -167,7 +193,6 @@ class _TelaCriarListaNovaViewState extends State<TelaCriarNovaListaView> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, 'taddproduto');
-          // Adicione a funcionalidade de adicionar novo item à lista de compras aqui
         },
         child: Icon(Icons.add, color: Colors.pink.shade400, size: 40),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
